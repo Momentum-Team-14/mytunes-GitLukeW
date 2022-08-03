@@ -14,15 +14,16 @@
   <body>
     <header>YouTunes</header>
 
-    <audio controls autoplay class="audioplayer">
-      <source src="" type="audio/ogg" />
-      <source src="" type="audio/mpeg" />
+    <audio autoplay id="audioplayer" controls src = ''>
       Your browser does not support the audio element.
     </audio>
-    <div class="currentsong">Alabama Shakes</div>
+    <div class="currentsong"></div> 
+    <div class="currentartist"></div>
+    
 
     <div class="search-bar">
-      <input
+      <form class= "formsearch" action="">
+        <input
         type="text"
         class="search-bar__input"
         placeholder="Search For Artist"
@@ -30,6 +31,7 @@
       <button class="search-bar__submit">
         <i class="fa fa-search" aria-label="submit search"></i>
       </button>
+    </form>
     </div>
 
     <div class="searchtext">Search Results:</div>

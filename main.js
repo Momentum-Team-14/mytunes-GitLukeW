@@ -1,4 +1,8 @@
 const container = document.querySelector(".container");
+const playAudio = document.querySelector('#audioplayer')
+const currentsong = document.querySelector('.currentsong')
+const currentartist = document.querySelector('.currentartist')
+
 
 //music player bar
 //music titles below bar
@@ -24,11 +28,12 @@ const container = document.querySelector(".container");
 
 //need to make a flex container for search thumbnails
 
+
 let searchBaseUrl = "https://itunes.apple.com/search?term=";
 
-let searchBarSubmit = document.querySelector('search-bar__submit')
+let searchForm = document.querySelector('.formsearch')
 
-searchBarSubmit.addEventListener('submit search', (event) => {
+searchForm.addEventListener('submit', (event) => {
   event.preventDefault()
   let searchBarInput = document.querySelector ('.search-bar__input')
   let searchUrl = `${searchBaseUrl}${searchBarInput.value}`
@@ -39,7 +44,7 @@ searchBarSubmit.addEventListener('submit search', (event) => {
 
 //fetch
 function getSearchResults(url) {
-fetch(searchUrl, {
+fetch(url, {
   method: "GET",
   headers: { "Content-Type": "application/json" },
 })
@@ -56,6 +61,7 @@ fetch(searchUrl, {
 
 //Search Results thumbnail
 function showSong(songArray) {
+  container.innerHTML = ''
   for (let song of songArray) {
     let songCardDiv = document.createElement("div");
     songCardDiv.classList.add("songcard");
@@ -94,5 +100,11 @@ function showSong(songArray) {
     // AlbumDiv.innerText = `${customer.location.city}, ${AlbumAbbrev} ${customer.location.postcode}`;
     songCardDiv.appendChild(bandNameDiv);
     songCardDiv.appendChild(albumDiv);
-  }
+
+    songCardDiv.addEventListener('click', (event) => {
+      playAudio.src = `${song.previewUrl}`;
+      currentsong.innerText = `Song Title: ${song.trackName}`;
+      currentartist.innerText = `Artist Name: ${song.artistName}`;
+    })
+}
 }
