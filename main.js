@@ -24,8 +24,21 @@ const container = document.querySelector(".container");
 
 //need to make a flex container for search thumbnails
 
+let searchBaseUrl = "https://itunes.apple.com/search?term=";
+
+let searchBarSubmit = document.querySelector('search-bar__submit')
+
+searchBarSubmit.addEventListener('submit search', (event) => {
+  event.preventDefault()
+  let searchBarInput = document.querySelector ('.search-bar__input')
+  let searchUrl = `${searchBaseUrl}${searchBarInput.value}`
+  console.log('search url', searchUrl)
+  getSearchResults(searchUrl)
+
+})
+
 //fetch
-let searchUrl = "https://itunes.apple.com/search?term=Alabama+Shakes&limit=15";
+function getSearchResults(url) {
 fetch(searchUrl, {
   method: "GET",
   headers: { "Content-Type": "application/json" },
@@ -38,6 +51,8 @@ fetch(searchUrl, {
     let searchResults = data.results;
     showSong(searchResults);
   });
+}
+
 
 //Search Results thumbnail
 function showSong(songArray) {
