@@ -1,0 +1,104 @@
+header {
+  border: 2px solid blue;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.audioplayer {
+  width: 100%;
+}
+
+.search-bar {
+  --size: 60px;
+  border: 2px solid black;
+  display:flex;
+  border-radius: 50px;
+  height: var(--size);
+  width: var(--size);
+  padding-top: 4px;
+  padding-right: 3px;
+  position: relative;
+  transition: width 500ms cubic-bezier(0.18, 0.89, 0.32, 1.08);
+  overflow: hidden;
+}
+
+.search-bar__input {
+    flex-grow: 1;
+    font-size: 1.5rem;
+    padding: 0 0.5em;
+    border: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    line-height: cal(var(--size) - 3px);
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .search-bar__input:focus {
+    outline: 0;
+  }
+
+  .search-bar__submit {
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    border-radius: 50%;
+    width: calc(var(--size) - 10px);
+    height: calc(var(--size) - 10px);
+    margin-left:auto;
+    transition: background 150ms ease-in-out;
+  }
+
+  .search-bar:focus-within {
+    width:100%;
+  }
+
+  /* background is cutting off pointer and not allowing full typing area */
+    .search-bar__input {
+      opacity: 1;
+      cursor: initial;
+      width: calc(75% - 60px);
+      
+    }
+
+  .search-bar__submit {
+    background: rgb(16, 15, 15);
+    color: white;
+  }
+
+    /* &:hover,
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 10px rgba(0,0,0,.65);
+    } */
+  
+
+
+ .container {
+      border: 2px solid red;
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%;
+    }
+
+.songcard {
+  border: 2px solid blue;
+ 
+}
+
+.albumart {
+  padding-bottom: 0;
+  height: 10rem;
+  width: 10rem;
+}
+
+.songTitle {
+  text-align: center;
+  margin-left: 2rem;
+  right: 2rem;
+  border: 2px solid red;
+}
