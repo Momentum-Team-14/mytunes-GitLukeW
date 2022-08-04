@@ -1,3 +1,4 @@
+/* Background color */
 body {
   background: rgb(34, 34, 34);
   background: linear-gradient(
@@ -9,6 +10,7 @@ body {
   color: rgba(243, 243, 243, 0.946);
 }
 
+/* The Random Records Banner */
 header {
   text-align: center;
   font-size: 50px;
@@ -16,21 +18,23 @@ header {
   margin-bottom: 2rem;
   margin-top: 20rem;
   text-align: none;
-  margin-right:0;
-
+  margin-right: 0;
 }
 
+/* The Audio player  */
 #audioplayer {
   width: 92%;
   display: none;
- margin: auto;
+  margin: auto;
 }
 
+/* Now playing banner */
 .currentsong {
   font-size: 18px;
   margin-bottom: 2rem;
 }
 
+/* Search bar and search bar movment */
 .search-bar {
   --size: 55px;
   display: flex;
@@ -55,10 +59,10 @@ header {
   top: 0;
   bottom: 0;
   left: 4rem;
-  padding-left: .75rem;
+  padding-left: 0.75rem;
   line-height: cal(var(--size) - 1px);
   opacity: 1;
-  width: calc(100% - 92px); 
+  width: calc(100% - 92px);
 }
 
 .search-bar__input:focus {
@@ -74,13 +78,13 @@ header {
   width: 60px;
   height: 60px;
   color: rgba(243, 243, 243, 0.946);
-  
 }
 
 .search-bar:focus-within {
   width: 92%;
 }
 
+/* Search results banner */
 .searchtext {
   font-size: 25px;
   text-decoration: underline;
@@ -89,12 +93,14 @@ header {
   margin-bottom: 1.2;
 }
 
+/* The main container that holds the song cards */
 .container {
   display: flex;
   flex-wrap: wrap;
   height: 100%;
 }
 
+/* All the song cards  */
 .songcard {
   width: 10rem;
   text-align: center;
@@ -102,6 +108,7 @@ header {
   margin: 0.25rem;
 }
 
+/* The album thumbnail  */
 .albumart {
   padding-bottom: 0;
   height: 8rem;
@@ -111,27 +118,29 @@ header {
 
 .albumart:hover {
   outline: 0;
- box-shadow: 0px 0px 15px 10px rgba(170, 168, 168, 0.275);
+  box-shadow: 0px 0px 15px 10px rgba(170, 168, 168, 0.275);
 }
 
 .albumart:focus {
   outline: 0;
- box-shadow: 0px 0px 15px 10px rgba(203, 203, 203, 0.268);
+  box-shadow: 0px 0px 15px 10px rgba(203, 203, 203, 0.268);
 }
 
+/* Song title on the song card */
 .SongTitle {
   text-align: center;
   word-wrap: normal;
   padding: 0.75rem;
 }
 
+/* Album name on the song card */
 .album {
-    text-align: center;
-    word-wrap: normal;
-    padding: 0.75rem;
-  }
+  text-align: center;
+  word-wrap: normal;
+  padding: 0.75rem;
+}
 
-
+/* The song section of the now planning banner */
 .currentsong {
   margin-top: 1rem;
   font-size: 35px;
@@ -140,6 +149,7 @@ header {
   font-weight: bold;
 }
 
+/* The artist section of the now planning banner */
 .currentartist {
   font-size: 24px;
   margin-bottom: 2rem;
@@ -148,8 +158,14 @@ header {
   text-align: center;
 }
 
+/* The now playing banner */
 .nowplaying {
   font-size: 25px;
   margin-top: 1rem;
   text-align: center;
+}
+
+/* Records logo */
+.logored {
+  color: red;
 }

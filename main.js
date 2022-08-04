@@ -1,3 +1,4 @@
+// Setting the variables
 const container = document.querySelector(".container");
 const playAudio = document.querySelector("#audioplayer");
 const currentsong = document.querySelector(".currentsong");
@@ -5,22 +6,25 @@ const currentartist = document.querySelector(".currentartist");
 const currentalbum = document.querySelector(".currentalbum");
 const searchtext = document.querySelector(".searchtext");
 const header = document.querySelector(".header");
-const nowplaying= document.querySelector('.nowplaying')
+const nowplaying = document.querySelector(".nowplaying");
+let searchForm = document.querySelector(".formsearch");
+let searchBarInput = document.querySelector(".search-bar__input");
 
+// The url for the iTunes API
 let searchBaseUrl = "https://itunes.apple.com/search?term=";
 
-let searchForm = document.querySelector(".formsearch");
-
+// The event listener that sends the info on "search"
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  let searchBarInput = document.querySelector(".search-bar__input");
-  let searchUrl = `${searchBaseUrl}${searchBarInput.value}`;
-  console.log("search url", searchUrl);
-  getSearchResults(searchUrl);
-  searchtext.innerText = "Search Results: ";
-})
+console.log(searchBarInput.value)
+    if (searchBarInput.value ) {
+      let searchUrl = `${searchBaseUrl}${searchBarInput.value}`;
+      getSearchResults(searchUrl);
+      searchtext.innerText = "Search Results: "; // <-- Displaying search results on search
+    }
+});
 
-//fetch
+//fetch from the API
 function getSearchResults(url) {
   fetch(url, {
     method: "GET",
@@ -44,7 +48,7 @@ function showSong(songArray) {
     songCardDiv.classList.add("songcard");
     container.appendChild(songCardDiv);
 
-    // image div here
+    // Album thumbnail from the API
     let albumArt = document.createElement("img");
     albumArt.classList.add("albumart");
     songCardDiv.appendChild(albumArt);
@@ -70,19 +74,19 @@ function showSong(songArray) {
     songCardDiv.appendChild(bandNameDiv);
     songCardDiv.appendChild(albumDiv);
 
+    // Event listener to perform the element mmoves on the page when the first song is played
     songCardDiv.addEventListener("click", (event) => {
       playAudio.src = `${song.previewUrl}`;
       nowplaying.innerText = "Now Playing: ";
       currentsong.innerText = `Song Title: ${song.trackName}`;
       currentartist.innerText = `Artist Name: ${song.artistName}`;
-      playAudio.style.display = "grid"; 
-      header.style.marginTop="1rem"
-      header.style.textAlign="right"
-      header.style.marginRight="2rem"
-      header.style.fontSize="25px"
-      header.style.marginBottom="0"
-      playAudio.style.width="50%"
-
+      playAudio.style.display = "grid";
+      header.style.marginTop = "1rem";
+      header.style.textAlign = "right";
+      header.style.marginRight = "2rem";
+      header.style.fontSize = "25px";
+      header.style.marginBottom = "0";
+      playAudio.style.width = "50%";
     });
   }
 }
