@@ -1,4 +1,4 @@
-// Setting the variables
+// Declaring the variables
 const container = document.querySelector(".container");
 const playAudio = document.querySelector("#audioplayer");
 const currentsong = document.querySelector(".currentsong");
@@ -42,50 +42,54 @@ function getSearchResults(url) {
 //Search Results thumbnail
 function showSong(songArray) {
   container.innerHTML = "";
-  for (let song of songArray) {
-    let songCardDiv = document.createElement("div");
-    songCardDiv.classList.add("songcard");
-    container.appendChild(songCardDiv);
+  if (songArray.length === 0) {
+    container.innerText = "No Results Found";
+  } else {
+    for (let song of songArray) {
+      let songCardDiv = document.createElement("div");
+      songCardDiv.classList.add("songcard");
+      container.appendChild(songCardDiv);
 
-    // Album thumbnail from the API
-    let albumArt = document.createElement("img");
-    albumArt.classList.add("albumart");
-    songCardDiv.appendChild(albumArt);
-    albumArt.src = `${song.artworkUrl100}`;
+      // Album thumbnail from the API
+      let albumArt = document.createElement("img");
+      albumArt.classList.add("albumart");
+      songCardDiv.appendChild(albumArt);
+      albumArt.src = `${song.artworkUrl100}`;
 
-    //Song Title from the API
-    let songTitleDiv = document.createElement("div");
-    songTitleDiv.classList.add("SongTitle");
-    songTitleDiv.innerText = `Song Title: ${song.trackName}`;
-    songCardDiv.appendChild(songTitleDiv);
+      //Song Title from the API
+      let songTitleDiv = document.createElement("div");
+      songTitleDiv.classList.add("SongTitle");
+      songTitleDiv.innerText = `Song Title: ${song.trackName}`;
+      songCardDiv.appendChild(songTitleDiv);
 
-    //Band Name from the API
-    let bandNameDiv = document.createElement("div");
-    bandNameDiv.classList.add("bandName");
-    bandNameDiv.innerText = `Artist Name: ${song.artistName}`;
-    songCardDiv.appendChild(songTitleDiv);
-    songCardDiv.appendChild(bandNameDiv);
+      //Band Name from the API
+      let bandNameDiv = document.createElement("div");
+      bandNameDiv.classList.add("bandName");
+      bandNameDiv.innerText = `Artist Name: ${song.artistName}`;
+      songCardDiv.appendChild(songTitleDiv);
+      songCardDiv.appendChild(bandNameDiv);
 
-    //Album from the API
-    let albumDiv = document.createElement("div");
-    albumDiv.classList.add("album");
-    albumDiv.innerText = `Album Name: ${song.collectionName}`;
-    songCardDiv.appendChild(bandNameDiv);
-    songCardDiv.appendChild(albumDiv);
+      //Album from the API
+      let albumDiv = document.createElement("div");
+      albumDiv.classList.add("album");
+      albumDiv.innerText = `Album Name: ${song.collectionName}`;
+      songCardDiv.appendChild(bandNameDiv);
+      songCardDiv.appendChild(albumDiv);
 
-    // Event listener to perform the element mmoves on the page when the first song is played
-    songCardDiv.addEventListener("click", (event) => {
-      playAudio.src = `${song.previewUrl}`;
-      nowplaying.innerText = "Now Playing: ";
-      currentsong.innerText = `Song Title: ${song.trackName}`;
-      currentartist.innerText = `Artist Name: ${song.artistName}`;
-      playAudio.style.display = "grid";
-      header.style.marginTop = "1rem";
-      header.style.textAlign = "right";
-      header.style.marginRight = "2rem";
-      header.style.fontSize = "25px";
-      header.style.marginBottom = "0";
-      playAudio.style.width = "50%";
-    });
+      // Event listener to perform the element mmoves on the page when the first song is played
+      songCardDiv.addEventListener("click", (event) => {
+        playAudio.src = `${song.previewUrl}`;
+        nowplaying.innerText = "Now Playing: ";
+        currentsong.innerText = `Song Title: ${song.trackName}`;
+        currentartist.innerText = `Artist Name: ${song.artistName}`;
+        playAudio.style.display = "grid";
+        header.style.paddingTop = "1rem";
+        header.style.textAlign = "right";
+        header.style.marginRight = "2rem";
+        header.style.fontSize = "25px";
+        header.style.marginBottom = "0";
+        playAudio.style.width = "50%";
+      });
+    }
   }
 }
