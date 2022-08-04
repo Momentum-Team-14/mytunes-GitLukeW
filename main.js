@@ -16,12 +16,11 @@ let searchBaseUrl = "https://itunes.apple.com/search?term=";
 // The event listener that sends the info on "search"
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
-console.log(searchBarInput.value)
-    if (searchBarInput.value ) {
-      let searchUrl = `${searchBaseUrl}${searchBarInput.value}`;
-      getSearchResults(searchUrl);
-      searchtext.innerText = "Search Results: "; // <-- Displaying search results on search
-    }
+  if (searchBarInput.value) {
+    let searchUrl = `${searchBaseUrl}${searchBarInput.value}${"&limit=50"}`;
+    getSearchResults(searchUrl);
+    searchtext.innerText = "Search Results: "; // <-- Displaying search results on search
+  }
 });
 
 //fetch from the API
@@ -54,20 +53,20 @@ function showSong(songArray) {
     songCardDiv.appendChild(albumArt);
     albumArt.src = `${song.artworkUrl100}`;
 
-    //Song Title
+    //Song Title from the API
     let songTitleDiv = document.createElement("div");
     songTitleDiv.classList.add("SongTitle");
     songTitleDiv.innerText = `Song Title: ${song.trackName}`;
     songCardDiv.appendChild(songTitleDiv);
 
-    //Band Name
+    //Band Name from the API
     let bandNameDiv = document.createElement("div");
     bandNameDiv.classList.add("bandName");
     bandNameDiv.innerText = `Artist Name: ${song.artistName}`;
     songCardDiv.appendChild(songTitleDiv);
     songCardDiv.appendChild(bandNameDiv);
 
-    //Album
+    //Album from the API
     let albumDiv = document.createElement("div");
     albumDiv.classList.add("album");
     albumDiv.innerText = `Album Name: ${song.collectionName}`;
