@@ -1,11 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="main.js" defer></script>
-  <title>Music Search</title>
-</head>
-<body>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Random Records</title>
+  </head>
+  <body>
+    <header class="header">Random <span class="logored">Records</span></header>
+
+    <!-- The search bar -->
+    <div class="search-bar">
+      <form class="formsearch" action="">
+        <input
+          type="text"
+          class="search-bar__input"
+          placeholder="Search For Song"
+          required
+        />
+        <button class="search-bar__submit">
+          <i class="fa fa-search" aria-label="submit search"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- The now playing banner -->
+    <div class="nowplaying"></div>
+    <div class="currentsong"></div>
+    <div class="currentartist"></div>
+    <div class="currentAlbum"></div>
+
+    <!-- The audio player -->
+    <audio autoplay id="audioplayer" controls src="">
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- The search results banner -->
+    <div class="searchtext"></div>
+
+    <!-- Song results and JS information -->
+    <div class="container"></div>
+  </body>
 </html>
